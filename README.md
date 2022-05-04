@@ -30,3 +30,12 @@ The simulation results on the CARLA platform show the ego vehicle can avoid the 
 ![p6](https://github.com/junjiexu628/Self_Driving_C4_Motion_Plan_Decision_Make/blob/main/image_animation/P6.png)
 
 ![p7](https://github.com/junjiexu628/Self_Driving_C4_Motion_Plan_Decision_Make/blob/main/image_animation/P7.png)
+
+## Summary
+The traditional hierarchical planner has three layers: Route planning, behavior planning and motion planning. 
+Route planning: For the unstructure enviornment, such as, the parking lot, the hybrid A* is suitable for route planning, and in terms of the structure environment, such as the highway traffic road, the trajectory plan is implemented.
+
+Behavior planning: finite state machines is used to divide the behavior actions on the road into finite states, such as, follow lanes, stop, decel to stop, change lanes...For the global route, the behavior plan is to execute the local decision on the different route ranges according to the prediction, location and trajectory.
+
+Motion planning: sigle step minimum jerk polynominal isn't implemented due to the discontinuty of the curvature and first derivative curvature. Cubic sprial is implemented for generating the trajectory. Rimpson rule is used for solve the (x,y)position of the ego vehicle due to the no-close form solution. The velocity profile is also generated according to the linear acceleration and compositional linear accelertion conditions. Collision check is also evaluated on the common 3 cricles enclosed the vehicle to calcuate the distance of each circles of ego vehicle and obstacle vehicle.
+
